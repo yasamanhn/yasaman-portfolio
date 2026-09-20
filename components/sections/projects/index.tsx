@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import {
@@ -22,11 +22,12 @@ import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const swiperRef = useRef<any>(null);
 
   return (
     <section
       id="projects"
-      className="overflow-hidden scroll-mt-20 pt-20 sm:pt-20"
+      className="overflow-hidden scroll-mt-20 pt-14 sm:pt-20"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         {/* Header */}
@@ -37,15 +38,18 @@ export default function Projects() {
         </div>
 
         {/* Projects Slider */}
-        <div className="overflow-hidden rounded-3xl">
+        <div className="relative overflow-hidden rounded-3xl pb-20 flex gap-10">
           <Swiper
-            modules={[Pagination, Autoplay]}
+            modules={[Pagination, Autoplay, Navigation]}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
             pagination={{
               clickable: true,
               dynamicBullets: true,
             }}
             autoplay={{
-              delay: 3500,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -66,7 +70,7 @@ export default function Projects() {
                 slidesPerView: 3,
               },
             }}
-            className="pb-14"
+            className="pb-2!"
           >
             {projects.map((project) => (
               <SwiperSlide key={project.id} className="h-auto">
@@ -74,6 +78,69 @@ export default function Projects() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Previous */}
+          <button
+            type="button"
+            className="
+      projects-prev
+      absolute
+      bottom-6
+      left-1/2
+      z-20
+      mr-2
+      flex
+      h-8
+      w-8
+      -translate-x-full
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-zinc-700
+      shadow-sm
+      transition-all
+      duration-200
+      hover:scale-105
+      hover:bg-violet-50
+      hover:text-violet-600
+    "
+            onClick={() => swiperRef.current?.slideNext()}
+            aria-label="نمونه کار قبلی"
+          >
+            <ChevronLeft size={17} />
+          </button>
+          {/* Next */}
+          <button
+            type="button"
+            className="
+      projects-next
+      absolute
+      bottom-6
+      left-1/2
+      z-20
+      ml-4
+      flex
+      h-8
+      w-8
+      -translate-x-0
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-zinc-700
+      shadow-sm
+      transition-all
+      duration-200
+      hover:scale-105
+      hover:bg-violet-50
+      hover:text-violet-600
+    "
+            onClick={() => swiperRef.current?.slidePrev()}
+            aria-label="نمونه کار بعدی"
+          >
+            <ChevronRight size={17} />
+          </button>
         </div>
       </div>
 

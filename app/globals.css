@@ -375,18 +375,5 @@ img {
 =========================== */
 .swiper-pagination {
   bottom: 0 !important;
-}
-
-.swiper-pagination-bullet {
-  width: 8px !important;
-  height: 8px !important;
-  background: #c4b5fd !important;
-  opacity: 1 !important;
-  transition: all 0.3s ease !important;
-}
-
-.swiper-pagination-bullet-active {
-  width: 24px !important;
-  border-radius: 9999px !important;
-  background: #7c3aed !important;
+  display: none !important;
 }

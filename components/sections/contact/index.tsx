@@ -40,7 +40,7 @@ export default function Contact() {
                 md:mx-0
               "
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 transition-all duration-300 group-hover:bg-violet-600 group-hover:text-white sm:h-11 sm:w-11">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 transition-all duration-300 group-hover:bg-violet-400 group-hover:text-white sm:h-11 sm:w-11">
                 <Phone size={18} />
               </span>
 
