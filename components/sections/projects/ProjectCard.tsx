@@ -45,8 +45,26 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </p>
 
         {/* Technologies */}
-        <div className="mt-5 flex items-center gap-2 overflow-hidden">
+        <div className="hidden md:flex mt-5  items-center gap-2 overflow-hidden">
           {project.technologies.slice(0, 4).map((technology) => (
+            <span
+              key={technology}
+              className="shrink-0 rounded-full bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition-colors duration-300 group-hover:bg-violet-100"
+            >
+              {technology}
+            </span>
+          ))}
+
+          {project.technologies.length > 4 && (
+            <span className="shrink-0 rounded-full bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-500">
+              +{project.technologies.length - 3}
+            </span>
+          )}
+        </div>
+
+        {/* mobile ui */}
+        <div className="md:hidden  mt-5 flex items-center gap-2 overflow-hidden">
+          {project.technologies.slice(0, 3).map((technology) => (
             <span
               key={technology}
               className="shrink-0 rounded-full bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition-colors duration-300 group-hover:bg-violet-100"

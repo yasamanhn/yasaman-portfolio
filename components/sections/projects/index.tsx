@@ -167,6 +167,7 @@ export default function Projects() {
             shadow-2xl
             sm:w-[calc(100%-2rem)]
             lg:max-h-[88vh]
+            pb-3
           "
         >
           {selectedProject && (
